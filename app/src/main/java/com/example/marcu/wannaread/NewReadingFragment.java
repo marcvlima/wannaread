@@ -7,6 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.marcu.wannaread.database.DataBaseControl;
 
 
 /**
@@ -14,6 +20,11 @@ import android.view.ViewGroup;
  * Activities that contain this fragment must implement the
  */
 public class NewReadingFragment extends Fragment {
+
+    protected String bookName, author, source, priority, genre;
+
+    protected static EditText etBookName, etAuthor, etSource;
+    protected static Spinner spPriority, spGenre;
 
     public NewReadingFragment() {
         // Required empty public constructor
@@ -29,6 +40,30 @@ public class NewReadingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.fragment_new_reading, container, false);
+
+        // Finds the elements
+        etBookName = (EditText)view.findViewById(R.id.etBookName);
+        etAuthor = (EditText)view.findViewById(R.id.etAuthor);
+        spPriority = (Spinner)view.findViewById(R.id.spPriority);
+        spGenre = (Spinner)view.findViewById(R.id.spGenre);
+        etSource = (EditText)view.findViewById(R.id.etSource);
+
+        Toast.makeText(getContext(), "Teste", Toast.LENGTH_SHORT).show();
+
+        Button btnSave = (Button)view.findViewById(R.id.btnSave);
+        btnSave.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataBaseControl crud = new DataBaseControl(getContext());
+
+                bookName = etBookName.getText().toString();
+                author = etAuthor.getText().toString();
+                priority = spPriority.getSelectedItem().toString();
+                genre = spPriority.getSelectedItem().toString();
+                source = etSource.getText().toString();
+            }
+        } );
+
         return view;
     }
 

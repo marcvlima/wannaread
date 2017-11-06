@@ -50,7 +50,7 @@
             android:src="@drawable/ic_author">
         </ImageView>
         <EditText
-            android:id="@+id/etBookAuthor"
+            android:id="@+id/etAuthor"
             android:layout_marginLeft="8dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -77,6 +77,7 @@
         </ImageView>
 
         <Spinner
+            android:id="@+id/spPriority"
             android:layout_marginLeft="11dp"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -100,6 +101,7 @@
             android:src="@drawable/ic_genre">
         </ImageView>
         <Spinner
+            android:id="@+id/spGenre"
             android:layout_marginLeft="11dp"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -123,7 +125,7 @@
             android:src="@drawable/ic_source">
         </ImageView>
         <EditText
-            android:id="@+id/etSourceName"
+            android:id="@+id/etSource"
             android:layout_marginLeft="8dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -146,7 +148,7 @@
         android:layout_alignParentStart="true">
 
         <Button
-            android:id="@+id/btn_save"
+            android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
