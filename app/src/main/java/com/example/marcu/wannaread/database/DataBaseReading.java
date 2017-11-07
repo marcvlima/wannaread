@@ -39,7 +39,6 @@ public class DataBaseReading extends SQLiteOpenHelper {
                 + READING_AUTHOR + " TEXT, "
                 + READING_PRIORITY + " INTEGER, "
                 + READING_PRIORITY_NAME + " TEXT, "
-                + READING_NAME + " TEXT, "
                 + READING_GENRE + " TEXT, "
                 + READING_SOURCE + " TEXT, "
                 + READING_DATE + " text, "

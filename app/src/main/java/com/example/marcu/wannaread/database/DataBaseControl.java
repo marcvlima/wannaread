@@ -30,6 +30,7 @@ public class DataBaseControl {
         long resultado;
 
         db = banco.getWritableDatabase();
+
         valores = new ContentValues();
         valores.put(DataBaseReading.READING_NAME, readingName);
         valores.put(DataBaseReading.READING_AUTHOR, readingAuthor);

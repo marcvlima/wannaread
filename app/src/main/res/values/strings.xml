@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">WannaRead</string>
+    <string name="header_title">O que tem pra ler?</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -9,7 +10,8 @@
     <string name="genre_name">Prioridade:</string>
     <string name="source_name">Fonte</string>
 
-
+    <string name="book_name_example">O Senhor dos Aneis</string>
+    <string name="empty_list">Ainda sem livros...</string>
 
     <string-array name="interest_levels">
         <item>Próxima Leitura</item>

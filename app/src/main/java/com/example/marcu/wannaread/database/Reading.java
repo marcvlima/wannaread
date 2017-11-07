@@ -9,14 +9,6 @@ import android.os.Parcelable;
 
 public class Reading implements Parcelable {
 
-    public String getReadingName() {
-        return readingName;
-    }
-
-    public void setReadingName(String readingName) {
-        this.readingName = readingName;
-    }
-
     private String readingName;
     private String id;
     private String readingAuthor;
@@ -27,6 +19,86 @@ public class Reading implements Parcelable {
     private int readingPagesNumber;
     private int readingPagesCurrent;
     private int readingStatus;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getReadingName() {
+        return readingName;
+    }
+
+    public void setReadingName(String readingName) {
+        this.readingName = readingName;
+    }
+
+    public String getReadingAuthor() {
+        return readingAuthor;
+    }
+
+    public void setReadingAuthor(String readingAuthor) {
+        this.readingAuthor = readingAuthor;
+    }
+
+    public int getReadingPriority() {
+        return readingPriority;
+    }
+
+    public void setReadingPriority(int readingPriority) {
+        this.readingPriority = readingPriority;
+    }
+
+    public String getReadingPriorityName() {
+        return readingPriorityName;
+    }
+
+    public void setReadingPriorityName(String readingPriorityName) {
+        this.readingPriorityName = readingPriorityName;
+    }
+
+    public String getReadingGenre() {
+        return readingGenre;
+    }
+
+    public void setReadingGenre(String readingGenre) {
+        this.readingGenre = readingGenre;
+    }
+
+    public String getReadingSource() {
+        return readingSource;
+    }
+
+    public void setReadingSource(String readingSource) {
+        this.readingSource = readingSource;
+    }
+
+    public int getReadingPagesNumber() {
+        return readingPagesNumber;
+    }
+
+    public void setReadingPagesNumber(int readingPagesNumber) {
+        this.readingPagesNumber = readingPagesNumber;
+    }
+
+    public int getReadingPagesCurrent() {
+        return readingPagesCurrent;
+    }
+
+    public void setReadingPagesCurrent(int readingPagesCurrent) {
+        this.readingPagesCurrent = readingPagesCurrent;
+    }
+
+    public int getReadingStatus() {
+        return readingStatus;
+    }
+
+    public void setReadingStatus(int readingStatus) {
+        this.readingStatus = readingStatus;
+    }
 
     public Reading(String id, String readingName, String readingAuthor, String readingPriorityName, String readingGenre, String readingSource) {
         this.id = id;

@@ -9,5 +9,12 @@ public class DashBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
+
+        // Infla o fragment
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, new DashBoardFragment())
+                .commit();
     }
 }

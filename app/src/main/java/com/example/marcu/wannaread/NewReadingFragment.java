@@ -2,7 +2,9 @@ package com.example.marcu.wannaread;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +23,7 @@ import com.example.marcu.wannaread.database.DataBaseControl;
  */
 public class NewReadingFragment extends Fragment {
 
-    protected String bookName, author, source, priority, genre;
+    protected String bookName, author, source, priority, genre, reading;
 
     protected static EditText etBookName, etAuthor, etSource;
     protected static Spinner spPriority, spGenre;
@@ -52,6 +54,7 @@ public class NewReadingFragment extends Fragment {
 
         Button btnSave = (Button)view.findViewById(R.id.btnSave);
         btnSave.setOnClickListener( new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 DataBaseControl crud = new DataBaseControl(getContext());
@@ -61,6 +64,12 @@ public class NewReadingFragment extends Fragment {
                 priority = spPriority.getSelectedItem().toString();
                 genre = spPriority.getSelectedItem().toString();
                 source = etSource.getText().toString();
+
+                reading = crud.addReading(bookName, genre, priority, genre, source);
+
+                Toast.makeText(getContext(), reading, Toast.LENGTH_SHORT).show();
+
+                getActivity().finish();
             }
         } );
 
