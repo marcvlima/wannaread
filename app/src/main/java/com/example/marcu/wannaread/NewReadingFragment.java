@@ -50,8 +50,6 @@ public class NewReadingFragment extends Fragment {
         spGenre = (Spinner)view.findViewById(R.id.spGenre);
         etSource = (EditText)view.findViewById(R.id.etSource);
 
-        Toast.makeText(getContext(), "Teste", Toast.LENGTH_SHORT).show();
-
         Button btnSave = (Button)view.findViewById(R.id.btnSave);
         btnSave.setOnClickListener( new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -62,10 +60,10 @@ public class NewReadingFragment extends Fragment {
                 bookName = etBookName.getText().toString();
                 author = etAuthor.getText().toString();
                 priority = spPriority.getSelectedItem().toString();
-                genre = spPriority.getSelectedItem().toString();
+                genre = spGenre.getSelectedItem().toString();
                 source = etSource.getText().toString();
 
-                reading = crud.addReading(bookName, genre, priority, genre, source);
+                reading = crud.addReading(bookName, author, priority, genre, source);
 
                 Toast.makeText(getContext(), reading, Toast.LENGTH_SHORT).show();
 

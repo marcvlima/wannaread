@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.marcu.wannaread.R;
@@ -50,18 +51,35 @@ public class ReadingListAdapter extends RecyclerView.Adapter<ReadingListAdapter.
         final int idIndex = mCursor.getColumnIndex(DataBaseReading.ID);
         int nameIndex = mCursor.getColumnIndex(DataBaseReading.READING_NAME);
         int statusIndex = mCursor.getColumnIndex(DataBaseReading.READING_STATUS);
+        int interestIndex = mCursor.getColumnIndex(DataBaseReading.READING_PRIORITY);
+        int pagesNumberIndex = mCursor.getColumnIndex(DataBaseReading.READING_PAGES_NUMBER);
+        int pagesCurrentIndex = mCursor.getColumnIndex(DataBaseReading.READING_PAGES_CURRENT);
+
 
         // Move o cursor do bd para a posicaco
         mCursor.moveToPosition(position);
 
         // Mapeia os dados no item da lista
         holder.tvBookName.setText(mCursor.getString(nameIndex));
+        holder.tvInterestLevel.setText(String.valueOf(mCursor.getInt(interestIndex)));
 
         if(mCursor.getInt(statusIndex) == 1)
             holder.icStatus.setImageResource(R.drawable.ic_status_stopped);
         else
             holder.icStatus.setImageResource(R.drawable.ic_status_started);
 
+        // Seta o percentual do progresso
+
+        int progress = 0;
+        if(mCursor.getInt(pagesNumberIndex) > 0) {
+            Double pagesCurrent = (double)mCursor.getInt(pagesCurrentIndex);
+            Double pagesNumber = (double)mCursor.getInt(pagesNumberIndex);
+            Double result = (pagesCurrent / pagesNumber) * 100;
+            progress = result.intValue();
+        }
+
+        holder.progressReading.setProgress(progress);
+        holder.tvProgress.setText(String.valueOf(progress)+ "%");
 
         // Deleta o livro ao clicar no delete para cada item da lista
         holder.icDelete.setOnClickListener(new View.OnClickListener() {
@@ -122,9 +140,11 @@ public class ReadingListAdapter extends RecyclerView.Adapter<ReadingListAdapter.
         int priorityIndex = mCursor.getColumnIndex(DataBaseReading.READING_PRIORITY);
         int genreIndex = mCursor.getColumnIndex(DataBaseReading.READING_GENRE);
         int sourceIndex = mCursor.getColumnIndex(DataBaseReading.READING_SOURCE);
-        int statusIndex = mCursor.getColumnIndex(DataBaseReading.READING_STATUS);
+        int dateIndex = mCursor.getColumnIndex(DataBaseReading.READING_DATE);
+
         int pagesNumberIndex = mCursor.getColumnIndex(DataBaseReading.READING_PAGES_NUMBER);
-        int pagesCurrentIndex = mCursor.getColumnIndex(DataBaseReading.READING_STATUS);
+        int pagesCurrentIndex = mCursor.getColumnIndex(DataBaseReading.READING_PAGES_CURRENT);
+        int statusIndex = mCursor.getColumnIndex(DataBaseReading.READING_STATUS);
 
         // Adiciona na tarefa as informacoes recuperadas
         Reading reading = new Reading();
@@ -135,6 +155,7 @@ public class ReadingListAdapter extends RecyclerView.Adapter<ReadingListAdapter.
         reading.setReadingPriorityName(mCursor.getString(priorityNameIndex));
         reading.setReadingGenre(mCursor.getString(genreIndex));
         reading.setReadingSource(mCursor.getString(sourceIndex));
+        reading.setReadingDate(mCursor.getString(dateIndex));
         reading.setReadingStatus(mCursor.getInt(statusIndex));
         reading.setReadingPagesNumber(mCursor.getInt(pagesNumberIndex));
         reading.setReadingPagesCurrent(mCursor.getInt(pagesCurrentIndex));
@@ -172,13 +193,17 @@ public class ReadingListAdapter extends RecyclerView.Adapter<ReadingListAdapter.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private View view;
         private ImageView icStatus;
-        private TextView tvBookName;
+        private TextView tvBookName, tvProgress, tvInterestLevel;
         private ImageView icDelete;
+        private ProgressBar progressReading;
 
         public ViewHolder(View view) {
             super(view);
             this.view = view;
             this.tvBookName = (TextView) view.findViewById(R.id.tvBookName);
+            this.tvInterestLevel = (TextView) view.findViewById(R.id.tvInterestLevel);
+            this.tvProgress = (TextView) view.findViewById(R.id.tvProgress);
+            this.progressReading = (ProgressBar) view.findViewById(R.id.progressReading);
             this.icStatus = (ImageView) view.findViewById(R.id.imgStatus);
             this.icDelete = (ImageView) view.findViewById(R.id.imgDelete);
         }

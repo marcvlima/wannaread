@@ -9,12 +9,21 @@
     <string name="interest_level">Interesse:</string>
     <string name="genre_name">Prioridade:</string>
     <string name="source_name">Fonte</string>
+    <string name="date_add">Data</string>
+
 
     <string name="book_name_example">O Senhor dos Aneis</string>
     <string name="empty_list">Ainda sem livros...</string>
 
     <string name="msg_update_success">Atualizado com sucesso!</string>
     <string name="msg_update_failure">Oops ocorreu uma falha!</string>
+
+    <string name="hint_pages_current">Informe página atual</string>
+    <string name="hint_pages_total">Informe total de páginas</string>
+
+
+    <string name="error_pagina_atual_menor">Página atual precisa ser menor do que total de páginas</string>
+    <string name="error_numero_pagina_zerado">Total de páginas precisa ser maior do que zero</string>
 
 
     <string-array name="interest_levels">
@@ -31,4 +40,5 @@
     </string-array>
 
     <string name="btn_add">Adicionar</string>
+    <string name="btn_update">Atualizar</string>
 </resources>

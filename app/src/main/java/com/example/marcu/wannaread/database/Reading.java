@@ -18,6 +18,7 @@ public class Reading implements Parcelable {
     private String readingPriorityName;
     private String readingGenre;
     private String readingSource;
+    private String readingDate;
     private int readingPagesNumber;
     private int readingPagesCurrent;
     private int readingStatus;
@@ -36,6 +37,14 @@ public class Reading implements Parcelable {
 
     public void setReadingName(String readingName) {
         this.readingName = readingName;
+    }
+
+    public String getReadingDate() {
+        return readingDate;
+    }
+
+    public void setReadingDate(String readingDate) {
+        this.readingDate = readingDate;
     }
 
     public String getReadingAuthor() {

@@ -23,7 +23,7 @@ public class DataBaseReading extends SQLiteOpenHelper {
     public static final String READING_PAGES_NUMBER = "readingPagesNumber";
     public static final String READING_PAGES_CURRENT = "readingPagesCurrent";
     public static final String READING_STATUS = "readingStatus";
-    public static final int VERSAO = 1;
+    public static final int VERSAO = 2;
 
 
     public DataBaseReading(Context context) {
@@ -41,7 +41,7 @@ public class DataBaseReading extends SQLiteOpenHelper {
                 + READING_PRIORITY_NAME + " TEXT, "
                 + READING_GENRE + " TEXT, "
                 + READING_SOURCE + " TEXT, "
-                + READING_DATE + " text, "
+                + READING_DATE + " TEXT, "
                 + READING_PAGES_NUMBER + " INTEGER, "
                 + READING_PAGES_CURRENT + " TEXT, "
                 + READING_STATUS + " INTEGER DEFAULT 1 "

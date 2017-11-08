@@ -38,7 +38,9 @@ public class DataBaseControl {
         valores.put(DataBaseReading.READING_PRIORITY, this.getPriorityByName(readingPriorityName));
         valores.put(DataBaseReading.READING_GENRE, readingGenre);
         valores.put(DataBaseReading.READING_SOURCE, readingSource);
-        valores.put(DataBaseReading.READING_DATE, this.getCurrentDate());
+        String date = this.getCurrentDate();
+        valores.put(DataBaseReading.READING_DATE, date);
+        valores.put(DataBaseReading.READING_STATUS, 1);
         valores.put(DataBaseReading.READING_PAGES_NUMBER, 0);
         valores.put(DataBaseReading.READING_PAGES_CURRENT, 0);
 
@@ -67,7 +69,7 @@ public class DataBaseControl {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public String getCurrentDate() {
-        DateFormat dateFormat = new SimpleDateFormat();
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         Date current = new Date();
         return dateFormat.format(current);
     }
@@ -75,7 +77,8 @@ public class DataBaseControl {
     public Cursor loadReadings() {
         Cursor cursor;
         db = banco.getReadableDatabase();
-        cursor = db.query(DataBaseReading.TABLE, new String[]{}, null, null, null, null, null, null);
+        String orderBy = DataBaseReading.READING_PRIORITY + " DESC ";
+        cursor = db.query(DataBaseReading.TABLE, new String[]{}, null, null, null, null, orderBy, null);
 
         if (cursor != null) {
             cursor.moveToFirst();

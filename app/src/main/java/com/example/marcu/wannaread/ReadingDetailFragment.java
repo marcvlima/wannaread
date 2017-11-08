@@ -27,9 +27,10 @@ public class ReadingDetailFragment extends Fragment {
 
     protected Reading reading;
     protected String bookName, author, source, priority, genre, pagesCurrent, pagesTotal;
+    protected int pagesCurrentInt, pagesTotalInt;
 
     protected static EditText etPagesCurrent, etPagesTotal;
-    protected static TextView tvBookName, tvAuthor, tvSource, tvPriority, tvGenre;
+    protected static TextView tvBookName, tvAuthor, tvSource, tvPriority, tvGenre, tvDate;
 
     public ReadingDetailFragment() {
     }
@@ -63,13 +64,25 @@ public class ReadingDetailFragment extends Fragment {
         tvPriority = (TextView)view.findViewById(R.id.tvPriority);
         tvGenre = (TextView)view.findViewById(R.id.tvGenre);
         tvSource = (TextView)view.findViewById(R.id.tvSource);
-
+        //tvDate = (TextView)view.findViewById(R.id.tvDate);
+        etPagesCurrent = (EditText) view.findViewById(R.id.etPagesCurrent);
+        etPagesTotal = (EditText) view.findViewById(R.id.etPagesTotal);
 
         tvBookName.setText(reading.getReadingName());
         tvAuthor.setText(reading.getReadingAuthor());
-        tvPriority.setText(reading.getReadingPriority());
+        tvPriority.setText(reading.getReadingPriorityName());
         tvGenre.setText(reading.getReadingGenre());
         tvSource.setText(reading.getReadingSource());
+        //tvDate.setText(reading.getReadingDate());
+
+        pagesCurrentInt = reading.getReadingPagesCurrent();
+        pagesTotalInt = reading.getReadingPagesNumber();
+
+        if(pagesCurrentInt > 0)
+            etPagesCurrent.setText(String.valueOf(pagesCurrentInt));
+
+        if(pagesTotalInt > 0)
+            etPagesTotal.setText(String.valueOf(pagesTotalInt));
 
         Button btnSave = (Button)view.findViewById(R.id.btnSave);
         btnSave.setOnClickListener( new View.OnClickListener() {
@@ -81,14 +94,33 @@ public class ReadingDetailFragment extends Fragment {
                 pagesCurrent = etPagesCurrent.getText().toString();
                 pagesTotal = etPagesTotal.getText().toString();
 
-                int pagesCurrentInt = Integer.parseInt(pagesCurrent);
-                int pagesTotalInt = Integer.parseInt(pagesTotal);
+                int pagesCurrentInt = 0;
+                int pagesTotalInt = 0;
 
-                Boolean result = crud.updateReading(reading.getId(), pagesCurrentInt, pagesTotalInt);
-                String resultadoMsg = result ? getResources().getString(R.string.msg_update_success): getResources().getString(R.string.msg_update_failure);
+                if(pagesCurrent.length() > 0)
+                    pagesCurrentInt = Integer.parseInt(pagesCurrent);
+
+                if(pagesTotal.length() >0)
+                    pagesTotalInt = Integer.parseInt(pagesTotal);
+
+                String resultadoMsg = "";
+                Boolean valid = true;
+
+                // Valida o preenchimento
+                if(pagesTotalInt == 0) {
+                    resultadoMsg = getResources().getString(R.string.error_numero_pagina_zerado);
+                    valid = false;
+                }else if(pagesCurrentInt > pagesTotalInt){
+                    resultadoMsg = getResources().getString(R.string.error_pagina_atual_menor);
+                    valid = false;
+                }
+
+                if(valid) {
+                    Boolean result = crud.updateReading(reading.getId(), pagesTotalInt, pagesCurrentInt);
+                    resultadoMsg = result ? getResources().getString(R.string.msg_update_success) : getResources().getString(R.string.msg_update_failure);
+                }
 
                 Toast.makeText(getContext(), resultadoMsg, Toast.LENGTH_SHORT).show();
-
                 getActivity().finish();
             }
         } );
