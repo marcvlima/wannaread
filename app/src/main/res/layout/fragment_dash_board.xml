@@ -9,8 +9,7 @@
     <LinearLayout
         android:id="@+id/layout_header"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:layout_height="80dp"
         android:background="@drawable/back_book"
         android:orientation="vertical">
 
@@ -19,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="30dp"
             android:text="@string/header_title"
             android:textColor="#fff"
             android:textSize="24sp" />
@@ -29,7 +28,7 @@
         android:id="@+id/layout_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="110dp"
         android:orientation="vertical"
         android:visibility="visible">
 
@@ -78,7 +77,7 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:tint="@android:color/white"
+        android:tint="@color/colorPrimary"
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_add" />
 

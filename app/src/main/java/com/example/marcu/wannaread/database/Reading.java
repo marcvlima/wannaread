@@ -3,6 +3,8 @@ package com.example.marcu.wannaread.database;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by marcus on 05/11/17.
  */

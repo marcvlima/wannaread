@@ -131,7 +131,6 @@ public class ReadingListAdapter extends RecyclerView.Adapter<ReadingListAdapter.
         reading.setId(mCursor.getString(idIndex));
         reading.setReadingName(mCursor.getString(nameIndex));
         reading.setReadingAuthor(mCursor.getString(authorIndex));
-        reading.setReadingAuthor(mCursor.getString(authorIndex));
         reading.setReadingPriority(mCursor.getInt(priorityIndex));
         reading.setReadingPriorityName(mCursor.getString(priorityNameIndex));
         reading.setReadingGenre(mCursor.getString(genreIndex));
