@@ -9,18 +9,18 @@
     <LinearLayout
         android:id="@+id/layout_header"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@drawable/back_book"
-        android:orientation="vertical">
+        android:layout_height="130dp"
+        android:background="@drawable/back_wanna"
+        android:orientation="vertical"
+        android:gravity="bottom">
 
         <TextView
             android:id="@+id/tv_headerTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp"
             android:text="@string/header_title"
-            android:textColor="#fff"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="24sp" />
     </LinearLayout>
 
@@ -28,7 +28,7 @@
         android:id="@+id/layout_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="140dp"
         android:orientation="vertical"
         android:visibility="visible">
 
